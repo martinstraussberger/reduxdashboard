@@ -1,0 +1,15 @@
+.switch_btn {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    background: var(--background);
+    border-radius: 6px;
+    color: var(--text);
+}
+
+.switch_btn:hover {
+    background-color: var(--background-secondary);
+}

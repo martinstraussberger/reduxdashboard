@@ -1,0 +1,18 @@
+p {
+    color: var(--text);
+}
+
+.title {
+    color: var(--text-inverted);
+}
+
+._box-md {
+    width: 220px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 2%;
+}

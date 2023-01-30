@@ -1,0 +1,151 @@
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+.circle {
+  top: 5%;
+  left: 80%;
+  position: absolute;
+  z-index: -1;
+}
+
+.sum-month {
+  color: var(--text-inverted);
+  font-size: 11rem;
+  font-weight: 600;
+  margin: 13vh 0 13vh 0;
+}
+
+/*------------------------------------*\
+  # Grid 
+\*------------------------------------*/
+.auto-grid {
+  --auto-grid-min-size: 16rem;
+}
+
+.auto-grid > * {
+  max-width: 400px;
+}
+
+.auto-grid > * + * {
+  margin-top: 1rem;
+}
+
+@supports (display: grid) {
+  .auto-grid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+    grid-gap: 1rem;
+  }
+
+  .auto-grid > * {
+    max-width: unset;
+  }
+
+  .auto-grid > * + * {
+    margin-top: unset;
+  }
+}
+
+/*------------------------------------*\
+  #breakpoint phones and tablets in portrait mode (300-768px)
+\*------------------------------------*/
+@media only screen and (max-width: 48em) and (min-width: 18.75em) {
+  .auto-grid_itemTimer {
+    grid-column: auto;
+    grid-row: 1/2;
+  }
+
+  .auto-grid_item1 {
+    grid-column: auto;
+    grid-row: 2/3;
+  }
+
+  .auto-grid_item2 {
+    margin: 0 0 5vh 0;
+    grid-column: auto;
+    grid-row: 3/4;
+  }
+
+  .sum-month {
+    font-size: 4rem;
+    font-weight: 600;
+    margin: 13vh 0 13vh 0;
+  }
+
+  .auto-grid_item3 {
+    grid-column: auto;
+    grid-row: 4/5;
+  }
+}
+
+/*------------------------------------*\
+  #breakpoint tablets in landscape mode (769-1024px)
+\*------------------------------------*/
+@media only screen and (max-width: 63.938em) and (min-width: 48.06em) {
+  .auto-grid {
+    padding: 1rem 1rem 2rem 1rem;
+  }
+
+  .auto-grid_item1 {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  
+  .auto-grid_itemTimer {
+    grid-column: 3/4;
+    grid-row: 1/2;
+  }
+  
+  .auto-grid_item2 {
+    margin: 0 0 5vh 0;
+    grid-column: 1/4;
+    grid-row: 2/3;
+  }
+
+  .sum-month {
+    font-size: 10rem;
+    font-weight: 600;
+    margin: 13vh 0 13vh 0;
+  }
+  
+  .auto-grid_item3 {
+    grid-column: 1/4;
+    grid-row: 3/4;
+  }
+  
+}
+
+/*------------------------------------*\
+  #breakpoint desktop/laptop monitors)
+\*------------------------------------*/
+@media (min-width: 64em) {
+  .auto-grid {
+    padding: 1rem 3rem 2rem 3rem;
+  }
+
+  .auto-grid_item1 {
+    grid-column: 1/3;
+    grid-row: 1/2;
+  }
+  
+  .auto-grid_itemTimer {
+    grid-column: 2 / max;
+    grid-row: 1/2;
+  }
+  
+  .auto-grid_item2 {
+    margin: 0 0 5vh 0;
+    grid-column: 2/6;
+    grid-row: 2/3;
+  }
+  
+  .auto-grid_item3 {
+    grid-column: 2/4;
+    grid-row: 3/4;
+  }
+  
+}

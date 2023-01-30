@@ -1,0 +1,62 @@
+li {
+  list-style: none;
+  text-decoration: none;
+}
+
+.listContainer {
+  display: flex;
+  border-radius: 6px;
+  color: var(--text);
+  background-color: var(--background);
+  flex-direction: column;
+  width: fit-content;
+  padding: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  padding: 10px;
+  text-align: left;
+  grid-gap: 1rem;
+}
+
+._tableHeader {
+  font-weight: bold;
+  text-align: center;
+  background-color: #ddd;
+}
+
+._orderTitle {
+  grid-column: 1 / max;
+}
+
+.gridItem_1 {
+  grid-column: 1 / 2;
+}
+
+.gridItem_2 {
+  grid-column: 2 / 3;
+}
+
+.gridItem_3 {
+  grid-column: 3 / 4;
+}
+
+.gridItem_4 {
+  grid-column: 4 / 5;
+}
+
+.list {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Make the table stack vertically on smaller screens */
+@media (max-width: 600px) {
+  .listContainer {
+    grid-template-columns: 1fr;
+  }
+}

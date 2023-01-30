@@ -1,0 +1,12 @@
+:root {
+    /* brand colors */
+    --background: #202027;
+    --background-secondary: #26262C;
+    --text: #929ba6;
+    --text-inverted: #fff;
+    --progressbar: #2066D2;
+
+    /* circle */
+    --circle-primary:#98255F;
+    --circle-secondary: #92255C;
+}
