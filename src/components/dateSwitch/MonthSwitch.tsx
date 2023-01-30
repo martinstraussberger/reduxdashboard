@@ -8,13 +8,21 @@ import { FC } from 'react';
 
 type CurrenMonthType = {
   currentMonth: any;
-  // setCurrentMonth: React.Dispatch<React.SetStateAction<{ month: number; year: number }>>;
   state: number;
+};
 
+const MaxDate = () => {
+  return (
+    <div>
+      <p>There is currently not enough data for 2022</p>
+    </div>
+  );
 };
 
 const { incrementMonth, decrementMonth } = monthSlice.actions;
 const MIN_DATE = new Date(2021, 0, 1);
+const MAX_DATE = new Date(2021, 11, 0);
+
 
 export const MonthSwitch: FC<CurrenMonthType> = () => {
   const dispatch = useDispatch();
@@ -28,7 +36,11 @@ export const MonthSwitch: FC<CurrenMonthType> = () => {
   }, [CURRENT_DATE, dispatch]);
 
   const handleIncrement = useCallback(() => {
-    dispatch(incrementMonth());
+    if (CURRENT_DATE < MAX_DATE) {
+      dispatch(incrementMonth());
+
+      return <MaxDate />;
+    }
   }, [CURRENT_DATE, dispatch]);
 
   return (
@@ -38,8 +50,16 @@ export const MonthSwitch: FC<CurrenMonthType> = () => {
           {CURRENT_DATE.toLocaleString('default', { month: 'long' })} {year}
         </h2>
       </div>
-      <SwitchButton state={month} onClick={handleDecrementLimit} icon={<MdArrowBackIosNew />} />
-      <SwitchButton state={month} onClick={handleIncrement} icon={<MdArrowForwardIos />} />
+      <SwitchButton
+        state={month}
+        onClick={handleDecrementLimit}
+        icon={<MdArrowBackIosNew />}
+      />
+      <SwitchButton
+        state={month}
+        onClick={handleIncrement}
+        icon={<MdArrowForwardIos />}
+      />
     </section>
   );
 };
