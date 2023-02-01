@@ -1,6 +1,4 @@
 import { MonthSwitch } from './components/dateSwitch/MonthSwitch';
-import { BarChartPerMonth } from './components/sumPerMonth/BarChartPerMonth';
-import { SumPerMonth } from './components/sumPerMonth/SumPerMonth';
 import { RefreshBox } from './components/refreshBox/refreshBox';
 import { DisplayMonth } from './data/DisplayMonth';
 import { useSelector } from 'react-redux';
@@ -29,8 +27,6 @@ function App() {
           </div>
 
           <div className='auto-grid_item2'>
-            <SumPerMonth />
-            <BarChartPerMonth />
           </div>
           <div className='auto-grid_item3'>
             <DisplayMonth />

@@ -1,34 +1,26 @@
-import { configureStore, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { URL } from '../helpers/constants';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-export const fetchData = createAsyncThunk('data/fetchData', async () => {
-  const response = await fetch(URL, { method: 'GET' });
-  const responseText = await response.text();
-  // substring(47) --> removes unexpected tokens from google spreadsheet
-  const parseAsJSONObject = JSON.parse(responseText.substring(47).slice(0, -2));
-  return parseAsJSONObject.table.rows;
-});
-
-const initialMonth = new Date(2021, 0); 
+const initialMonth = new Date(2021, 0);
 
 const monthSlice = createSlice({
   name: 'month',
   initialState: {
+    sum: 0,
     month: initialMonth.getMonth(),
     // currentMonth: new Date().getMonth(),
-    year: initialMonth.getFullYear()
+    year: initialMonth.getFullYear(),
   },
   reducers: {
     incrementMonth: (state) => {
       state.month += 1;
-      if(state.month > 11) {
+      if (state.month > 11) {
         state.month = 0;
         state.year += 1;
       }
     },
     decrementMonth: (state) => {
       state.month -= 1;
-      if(state.month < 0) {
+      if (state.month < 0) {
         state.month = 11;
         state.year -= 1;
       }
@@ -43,5 +35,5 @@ const store = configureStore({
 });
 
 export { store };
-export {monthSlice};
+export { monthSlice };
 export const { month } = monthSlice.actions;
