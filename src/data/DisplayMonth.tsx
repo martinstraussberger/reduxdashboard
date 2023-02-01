@@ -112,6 +112,7 @@ export const DisplayMonth: FC<DisplayOrdersDataType> = () => {
           borderRadius: '2px',
           backgroundColor: ' #202027',
           margin: '0 0 10vh 0',
+          color: 'white'
         }}
       >
         <div
@@ -122,6 +123,7 @@ export const DisplayMonth: FC<DisplayOrdersDataType> = () => {
             transform: 'rotate(0deg)',
           }}
         />
+        <h3>Monthly Goal 100.000 €</h3>
       </div>
       <section className='listContainer'>
         {selectedMonth.map(({ month, orders }) => (
