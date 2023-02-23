@@ -5,6 +5,7 @@ import { useInterval } from '../hooks/useInterval';
 import { fetchData } from '../helpers/fetchData';
 
 import './DisplayMonth.css';
+import { RemainingTimeToRefresh } from '../components/UIElements/RemainingTimeToRefresh';
 
 type DisplayOrdersDataType = {
   children?: React.ReactNode | Record<string, unknown>;
@@ -81,6 +82,7 @@ export const DisplayMonth: FC<DisplayOrdersDataType> = () => {
 
   return (
     <>
+      <RemainingTimeToRefresh duration={duration} />
       <div key={monthSum} className='sum-month'>
         {euroCurrency}
       </div>

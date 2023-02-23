@@ -17,7 +17,7 @@ export const RemainingTimeToRefresh: FC<RemainingTimeProps> = ({ duration }) => 
     }
   }, [remainingTime]);
   return (
-    <div style={{ textAlign: 'right' }}>
+    <div style={{ textAlign: 'left' }}>
       <h2>Refetch in: {remainingTime}s</h2>
     </div>
   );

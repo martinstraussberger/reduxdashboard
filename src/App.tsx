@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { MonthSwitch } from './components/dateSwitch/MonthSwitch';
 import { DisplayMonth } from './data/DisplayMonth';
-import { RemainingTimeToRefresh } from './components/UIElements/RemainingTimeToRefresh';
 
 import './variables.css';
 import './App.css';
@@ -15,7 +14,6 @@ function App() {
       <div className='wrapper'>
         <div className='auto-grid'>
           <div className='auto-grid_itemTimer'>
-          <RemainingTimeToRefresh duration={20000}/>
           </div>
           <div className='auto-grid_item1'>
             <h3>Order Dashboard</h3>
