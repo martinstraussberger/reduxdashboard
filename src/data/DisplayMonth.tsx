@@ -1,7 +1,9 @@
 import React from 'react';
 import { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { URL } from '../helpers/constants';
+import { useInterval } from '../hooks/useInterval';
+import { fetchData } from '../helpers/fetchData';
+
 import './DisplayMonth.css';
 
 type DisplayOrdersDataType = {
@@ -10,39 +12,18 @@ type DisplayOrdersDataType = {
 
 export const DisplayMonth: FC<DisplayOrdersDataType> = () => {
   const { month } = useSelector((state: any) => state.month);
-
+  const duration = 20000;
   const currentMonth = month;
   const [data, setData] = useState<[]>([]);
   const [error, setError] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
-  const getErrorMessage = (error: unknown) => {
-    if (error instanceof Error) return error.message;
-    return String(error);
-  };
-
-  const reportError = ({ message }: { message: string }) => {
-    console.log('An error occured: ', error.message);
-  };
+  useInterval(() => {
+    fetchData(setError, setData, setLoading);
+  }, duration);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        await fetch(URL, { method: 'GET' })
-          .then((response) => response.text())
-          .then((responseText) => {
-            const parseAsJSONObject = JSON.parse(responseText.substring(47).slice(0, -2));
-            setData(parseAsJSONObject.table.rows);
-          });
-      } catch (error) {
-        setError(error instanceof Error);
-        reportError({ message: getErrorMessage(error) });
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
+    fetchData(setError, setData, setLoading);
   }, []);
 
   if (loading) {
@@ -50,9 +31,8 @@ export const DisplayMonth: FC<DisplayOrdersDataType> = () => {
   }
 
   if (error) {
-    throw new Error('An error occured: ', error);
+    throw new Error('An error occurred: ', error);
   }
-
   const months = [
     'January',
     'February',
@@ -112,7 +92,7 @@ export const DisplayMonth: FC<DisplayOrdersDataType> = () => {
           borderRadius: '2px',
           backgroundColor: ' #202027',
           margin: '0 0 10vh 0',
-          color: 'white'
+          color: 'white',
         }}
       >
         <div
@@ -125,6 +105,7 @@ export const DisplayMonth: FC<DisplayOrdersDataType> = () => {
         />
         <h3>Monthly Goal 100.000 €</h3>
       </div>
+
       <section className='listContainer'>
         {selectedMonth.map(({ month, orders }) => (
           <div key={month} className='grid'>
